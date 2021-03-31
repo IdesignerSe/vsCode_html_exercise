@@ -1,0 +1,8 @@
+{
+    "editor.renderWhitespace": "none",
+    "editor.accessibilitySupport": "off",
+    "editor.autoClosingOvertype": "never",
+    "editor.autoIndent": "none",
+    "editor.autoSurround": "never",
+    "editor.codeLens": false
+}
