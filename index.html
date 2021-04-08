@@ -1,29 +1,88 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<style>
-		.columns{
-			width: 100%;
-			border: solid 1px #ccc;
-		}
 
-		.columns > div {
-			width: 50%;
-			border: solid 1px #ddd;
-			float: left;
+	<head>
+		<meta charset="utf-8" />
 
-		}
-	</style>
-</head>
-<body>
-	<div>
-		<h1>My First Heading</h1>
-		<h2>Hello<h2>
-		<div>Column 1</div>
-		<div>Column 2</div>
-    	<p>My first paragraph.</p>
-	</div>
+		<title>IdesignerSe React!</title>
+		<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+		<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
+	</head>
 
-</body>
+	<body>
+		<div id="root"></div>
+		<!--
+			Menu example. This example shows how a Menu component renders MenuItem
+			components
+			
+			props: används till att skicka data in i a komponent utifrån.
+			state: innehåller komponentens egen data. När state ändras renderas komponentens
+			på nytt. Den ritas om på skärmen. 
+		-->
+		<script type="text/babel">
+			// props 
+			const MenuItem = (props) => {
+				return (
+					<div className="menuItem">
+						<img src={props.imageUrl} /><br />
+						<span>{props.title}</span><br />
+						<a href={props.linkUrl}>{props.title}</a>
+					</div>
+				);
+			}
+
+			class Menu extends React.Component {
+				constructor(props) {
+					super(props);
+					this.state = {
+						secondTitle: "Fordon",
+						secondImageUrl: "https://images.ctfassets.net/bi9pvs2ayg6b/GBTpghUBtBGhoe4kX8Dy2/c8c428fb738e343fe1d7201301e94162/jobb-startsidepuff-1000px.png?w=100",
+						secondLinkUrl: "https://www.blocket.se/annonser/hela_sverige/fordon?cg=1000"
+					};
+				}
+
+				render() {
+					return (
+						<div>
+
+							<MenuItem
+								title="Jobb"
+								imageUrl="https://images.ctfassets.net/bi9pvs2ayg6b/GBTpghUBtBGhoe4kX8Dy2/c8c428fb738e343fe1d7201301e94162/jobb-startsidepuff-1000px.png?w=100"
+								linkUrl="https://jobb.blocket.se/"
+							/>
+
+							<MenuItem
+								title="Jobb"
+								imageUrl="https://images.ctfassets.net/bi9pvs2ayg6b/GBTpghUBtBGhoe4kX8Dy2/c8c428fb738e343fe1d7201301e94162/jobb-startsidepuff-1000px.png?w=100"
+								linkUrl="https://jobb.blocket.se/"
+							/>
+
+							<MenuItem
+								title={this.state.secondTitle}
+								imageUrl={this.state.secondImageUrl}
+								linkUrl={this.state.secondLinkUrl}
+							/>
+
+							<MenuItem
+								title={this.state.secondTitle}
+								imageUrl={this.state.secondImageUrl}
+								linkUrl={this.state.secondLinkUrl}
+							/>
+
+							<MenuItem title="För hemmet" />
+						</div>
+					);
+				}
+			}
+
+			const r = document.getElementById('root');
+			/*
+				The attributes used when the MenuItem components are rendered are the same
+				attributes that are used on props in the function component above.
+			*/
+			ReactDOM.render(<Menu />, r);
+
+		</script>
+	</body>
 
 </html>
