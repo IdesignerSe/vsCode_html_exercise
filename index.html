@@ -1,86 +1,46 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 	<head>
 		<meta charset="utf-8" />
 
-		<title>IdesignerSe React!</title>
+		<title>IdesignerSe meet ReactJS!</title>
 		<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
 		<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
 		<script src="https://unpkg.com/babel-standalone@6.26.0/babel.js"></script>
 	</head>
 
 	<body>
-		<div id="root"></div>
-		<!--
-			Menu example. This example shows how a Menu component renders MenuItem
-			components
+		<div id="root">
 			
-			props: används till att skicka data in i a komponent utifrån.
-			state: innehåller komponentens egen data. När state ändras renderas komponentens
-			på nytt. Den ritas om på skärmen. 
-		-->
+		</div>
 		<script type="text/babel">
-			// props 
-			const MenuItem = (props) => {
-				return (
-					<div className="menuItem">
-						<img src={props.imageUrl} /><br />
-						<span>{props.title}</span><br />
-						<a href={props.linkUrl}>{props.title}</a>
-					</div>
-				);
-			}
+			class InputComponent extends Reac.Component{
 
-			class Menu extends React.Component {
-				constructor(props) {
+				constructor(props){
 					super(props);
-					this.state = {
-						secondTitle: "Fordon",
-						secondImageUrl: "https://images.ctfassets.net/bi9pvs2ayg6b/GBTpghUBtBGhoe4kX8Dy2/c8c428fb738e343fe1d7201301e94162/jobb-startsidepuff-1000px.png?w=100",
-						secondLinkUrl: "https://www.blocket.se/annonser/hela_sverige/fordon?cg=1000"
-					};
+					this.state = { name: "" };
 				}
 
-				render() {
-					return (
+				handleChange(event){
+					console.log(event.target.value);
+					this.setState({});
+
+				}
+
+				render(){
+					return(
 						<div>
-
-							<MenuItem
-								title="Jobb"
-								imageUrl="https://images.ctfassets.net/bi9pvs2ayg6b/GBTpghUBtBGhoe4kX8Dy2/c8c428fb738e343fe1d7201301e94162/jobb-startsidepuff-1000px.png?w=100"
-								linkUrl="https://jobb.blocket.se/"
-							/>
-
-							<MenuItem
-								title="Jobb"
-								imageUrl="https://images.ctfassets.net/bi9pvs2ayg6b/GBTpghUBtBGhoe4kX8Dy2/c8c428fb738e343fe1d7201301e94162/jobb-startsidepuff-1000px.png?w=100"
-								linkUrl="https://jobb.blocket.se/"
-							/>
-
-							<MenuItem
-								title={this.state.secondTitle}
-								imageUrl={this.state.secondImageUrl}
-								linkUrl={this.state.secondLinkUrl}
-							/>
-
-							<MenuItem
-								title={this.state.secondTitle}
-								imageUrl={this.state.secondImageUrl}
-								linkUrl={this.state.secondLinkUrl}
-							/>
-
-							<MenuItem title="För hemmet" />
+						<input type="text" name="name" onChange={
+							this.handelChange} /><br />
+						<button>Submit Name</button>
 						</div>
 					);
 				}
 			}
 
 			const r = document.getElementById('root');
-			/*
-				The attributes used when the MenuItem components are rendered are the same
-				attributes that are used on props in the function component above.
-			*/
-			ReactDOM.render(<Menu />, r);
+			ReactDOM.render(<InputComponent /> , r);
 
 		</script>
 	</body>
